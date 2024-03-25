@@ -1,18 +1,19 @@
 import sys
-from PyQt5 import uic
 from PyQt5.QtWidgets import (
     QApplication,
     QMainWindow,
     QTableWidgetItem,
     QDialog,
 )
+from UI.main_ui import Ui_MainWindow
+from UI.addEditCoffeeForm_ui import Ui_Dialog
 import sqlite3
 
 
-class EditCoffeeForm(QDialog):
+class EditCoffeeForm(QDialog, Ui_Dialog):
     def __init__(self, coffee_id=None):
-        super().__init__()
-        uic.loadUi("addEditCoffeeForm.ui", self)
+        super(EditCoffeeForm, self).__init__()
+        self.setupUi(self)
         self.coffee_id = coffee_id
         self.initUI()
 
@@ -27,7 +28,7 @@ class EditCoffeeForm(QDialog):
         price = self.priceEdit.value()
         volume = self.volumeEdit.value()
 
-        connection = sqlite3.connect("coffee.sqlite")
+        connection = sqlite3.connect("data/coffee.sqlite")
         cursor = connection.cursor()
 
         if self.coffee_id is None:  # Добавление новой записи
@@ -47,7 +48,7 @@ class EditCoffeeForm(QDialog):
                     description,
                     price,
                     volume,
-                    self.coffee_id,
+                    int(self.coffee_id),
                 ),
             )
 
@@ -56,16 +57,16 @@ class EditCoffeeForm(QDialog):
         self.accept()
 
 
-class CoffeeApp(QMainWindow):
+class CoffeeApp(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super().__init__()
-        uic.loadUi("main.ui", self)
+        super(CoffeeApp, self).__init__()
+        self.setupUi(self)
         self.load_coffee_data()
         self.addButton.clicked.connect(self.add_coffee)
         self.editButton.clicked.connect(self.edit_coffee)
 
     def load_coffee_data(self):
-        connection = sqlite3.connect("coffee.sqlite")
+        connection = sqlite3.connect("data/coffee.sqlite")
         cursor = connection.cursor()
 
         cursor.execute("SELECT * FROM coffee")
@@ -90,7 +91,7 @@ class CoffeeApp(QMainWindow):
         selected = self.tableWidget.currentRow()
         if selected >= 0:
             coffee_id = self.tableWidget.item(selected, 0).text()
-            editor = EditCoffeeForm(coffee_id)
+            editor = EditCoffeeForm(coffee_id=coffee_id)
             if editor.exec_():
                 self.load_coffee_data()
 
