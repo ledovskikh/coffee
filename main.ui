@@ -14,7 +14,7 @@
    <string>Coffee Database</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+   <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTableWidget" name="tableWidget">
       <property name="columnCount">
@@ -36,19 +36,22 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="addButton">
+      <property name="text">
+       <string>Add Coffee</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="editButton">
+      <property name="text">
+       <string>Edit Coffee</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
-  <layout class="QVBoxLayout" name="layoutVertical">
-   <item>
-    <widget class="QMenuBar" name="menubar"/>
-   </item>
-   <item>
-    <widget class="QToolBar" name="mainToolBar"/>
-   </item>
-   <item>
-    <widget class="QStatusBar" name="statusbar"/>
-   </item>
-  </layout>
  </widget>
  <resources/>
  <connections/>
