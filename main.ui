@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Coffee Database</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+    <item>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="columnCount">
+       <number>7</number>
+      </property>
+      <property name="rowCount">
+       <number>0</number>
+      </property>
+      <property name="horizontalHeaderLabels">
+       <stringlist>
+        <string>ID</string>
+        <string>Name</string>
+        <string>Roast Degree</string>
+        <string>Ground or Beans</string>
+        <string>Flavor Description</string>
+        <string>Price</string>
+        <string>Volume</string>
+       </stringlist>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <layout class="QVBoxLayout" name="layoutVertical">
+   <item>
+    <widget class="QMenuBar" name="menubar"/>
+   </item>
+   <item>
+    <widget class="QToolBar" name="mainToolBar"/>
+   </item>
+   <item>
+    <widget class="QStatusBar" name="statusbar"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
